@@ -21,6 +21,7 @@
   "homepage": "https://github.com/NDCHRIS2003/restful-api-nodjs#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.10.15",
     "nodemon": "^2.0.6"
   }
 }

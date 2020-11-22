@@ -1,10 +1,26 @@
 let express = require("express");
 let app = express();
 let routerPerson = require("./route/person");
+let path = require;
+
+app.use((req, res, next) => {
+  Console.log(`${new Date().toString()}=> ${req.originalUrl}`);
+
+  next();
+});
 
 app.use(routerPerson);
 app.use(express.static("public"));
 
+// handler for 404
+app.use((req, res, next) => {
+  res.Status(404).send("This page does not exist");
+});
+// handler for error 500
+app.use((err, req, res, next) => {
+  Console.Error(err.stack);
+  res.sendfile(path.join(__dirname, "../public/500.html"));
+});
 const port = process.env.PORT || 3000;
 
 //app.listen(PORT, () => Console.log(`Port started on ${PORT}`));
