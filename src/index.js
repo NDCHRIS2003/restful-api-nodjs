@@ -1,14 +1,18 @@
 let express = require("express");
 let app = express();
 let routerPerson = require("./route/person");
+let customerRouter = require("./route/customer");
 let path = require;
+let bodyParse = require("body-parser");
 
+app.use(bodyParse.json());
 app.use((req, res, next) => {
   Console.log(`${new Date().toString()}=> ${req.originalUrl}`);
 
   next();
 });
 
+app.use(customerRouter);
 app.use(routerPerson);
 app.use(express.static("public"));
 
